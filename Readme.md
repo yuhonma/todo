@@ -8,7 +8,7 @@
 「ToDoリスト」はやるべき作業を整理して保存するタスク管理アプリです。
 ### データベースの設定
 MySQLでデータベースを作成し、以下のコマンドで2つのテーブルを作成してください。
-'''
+```sql
 CREATE TABLE task(
     id INT(11) AUTO_INCREMENT NOT NULL, 
     task VARCHAR(30) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE category(
     created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
-'''
+```
 ### データベースへの接続
 library.php内の9行目にデータベース情報を入力し、接続してください。
 
