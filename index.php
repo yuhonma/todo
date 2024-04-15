@@ -10,7 +10,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $task = filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING);
     $date = strtotime(filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING));
     $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
-    $_POST['category'] = $category;
 
     if(!$task){
         header('Location: index.php');
@@ -58,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoリスト</title>
-    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 
 </head>
 <body>
@@ -92,12 +91,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <ul id="taskList">
         <?php while($stmt->fetch()):?>
         <li>
-            <span name="task">
-                <span style="font-size: 20px;"><?php echo h($task_view);?></span>
+            <span>
+                <span class="task"><?php echo h($task_view);?></span>
                 <a href="./category?category_name=<?php echo $category_view;?>" style="color: gray;"><?php echo h($category_view);?></a>
                 <button onclick="location.href='do_complete.php?id=<?php echo $task_id;?>'" name="success">タスク完了</button>
             </span>
-            <p>
+            <p class="time">
             <!-- 時間表示 -->
             <?php if($due):?>
             
@@ -106,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             
             <?php endif; ?>
             
-            <span style="font-size: 13px;">
+            <span class="menu">
                 [<a href="edit.php?id=<?php echo $task_id;?>" style="color: gray;">編集</a>]
                 [<a href="delete.php?id=<?php echo $task_id;?>" style="color: red;">削除</a>]
             </span>
@@ -114,7 +113,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </li>
         <?php endwhile; ?>
     </ul>
-    <p style="text-align: right;"><a href="completed.php">完了したタスク</a></p>
+    <p name="completed"><a href="completed.php">完了したタスク</a></p>
 
 </div>
 

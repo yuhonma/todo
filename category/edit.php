@@ -48,7 +48,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die($db->error);
     }
 
-    header('Location: index.php');
+
+    header('Location: index.php?category_name='.$category);
     
 
 }
@@ -60,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>タスクの編集</title>
-    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 
 </head>
 <body>

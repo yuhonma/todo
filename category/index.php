@@ -12,7 +12,7 @@ $category = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoリスト</title>
-    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 
 </head>
 <body>
@@ -56,7 +56,7 @@ $category = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING);
                 [<?php echo h(view_time($due));?>]
             <?php endif; ?>
 
-            <span style="font-size: 13px;">
+            <span name="font-size: 13px;">
                 [<a href="edit.php?id=<?php echo $task_id;?>" style="color: gray;">編集</a>]
                 [<a href="delete.php?id=<?php echo $task_id;?>" style="color: red;">削除</a>]
             </span>

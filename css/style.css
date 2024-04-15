@@ -1,0 +1,87 @@
+@import url("sanitize.css");
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eee;
+}
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+h2 {
+    text-align: center;
+    padding: 0;
+}
+input[name="task"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type="datetime-local"] {
+    width: 50%;
+    padding: 16px;
+    margin-bottom: 10px;
+    background-color: lightblue;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[name="category"] {
+    width: 49%;
+    padding: 16px;
+    margin: 0 0 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.time{
+    padding: 0;
+    margin: 0;
+}
+li button {
+    border-color: rgb(117, 117, 117);
+    border-width: 1px;
+    border-radius: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+li .task {
+    font-size: 20px;
+    font-weight: bold;
+}
+li .time {
+    font-size: 15px;
+    display: flex;
+}
+li .menu {
+    font-size: 13px;
+    text-align: right;
+}
