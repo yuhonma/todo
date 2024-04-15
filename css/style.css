@@ -85,3 +85,6 @@ li .menu {
     font-size: 13px;
     text-align: right;
 }
+p[name="completed"] {
+    text-align: right;
+}

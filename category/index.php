@@ -46,17 +46,17 @@ $category = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING);
         <?php while($stmt->fetch()):?>
         <li>
             <span name="task">
-                <span style="font-size: 20px;"><?php echo h($task_view);?></span>
+                <span class="task"><?php echo h($task_view);?></span>
                 <button onclick="location.href='do_complete.php?id=<?php echo $task_id;?>'" name="success">タスク完了</button>
             </span>
             
-            <p>
+            <p class="time">
             <?php if($due):?>
                 <?php echo h(view_deadline($due));?>
                 [<?php echo h(view_time($due));?>]
             <?php endif; ?>
 
-            <span name="font-size: 13px;">
+            <span class="menu">
                 [<a href="edit.php?id=<?php echo $task_id;?>" style="color: gray;">編集</a>]
                 [<a href="delete.php?id=<?php echo $task_id;?>" style="color: red;">削除</a>]
             </span>

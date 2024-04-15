@@ -41,7 +41,7 @@ $db = dbconnect();
         <?php while($stmt->fetch()):?>
         <li>
             <span name="task">
-                <span style="font-size: 20px;"><?php echo h($task_view);?></span>
+                <span class="task"><?php echo h($task_view);?></span>
                 <a href="./category?category_name=<?php echo $category_view;?>" style="color: gray;"><?php echo h($category_view);?></a>
                 <button onclick="location.href='do_incomplete.php?id=<?php echo $task_id;?>'" name="success">未完了タスクへ</button>
             </span>
@@ -54,7 +54,7 @@ $db = dbconnect();
             
             <?php endif; ?>
             
-            <span style="font-size: 13px;">
+            <span class="menu">
                 [<a href="delete.php?id=<?php echo $task_id;?>" style="color: red;">削除</a>]
             </span>
             </p>

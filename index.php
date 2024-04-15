@@ -5,6 +5,18 @@ date_default_timezone_set("Asia/Tokyo");
 
 
 $db = dbconnect();
+$sort_types = [
+    'desc' => 't.id desc',
+    'asc' => 't.id asc',
+    'category' => 't.category_id',
+    'time' => 'due_time asc'
+];
+
+if(isset($_REQUEST["sort"])){
+    $sort_type = $_REQUEST["sort"];
+}else{
+    $sort_type = "desc";
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $task = filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING);
@@ -64,6 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <div class="container">
     <h2>ToDoリスト</h2>
+
     <form action="" method="post">
         <input type="text" name="task" placeholder="新しいタスクを入力してください">
         <input type="datetime-local" name="date" value=""/>
@@ -72,11 +85,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </form>
 
     <?php 
-    $stmt = $db->prepare('
+    $stmt = $db->prepare("
     SELECT task, category_name, t.id, t.category_id, due_time
     FROM task t, category c 
     WHERE t.category_id=c.id and t.completed = FALSE 
-    ORDER BY t.id desc;');
+    ORDER BY $sort_types[$sort_type];");
     if(!$stmt){
         die($db->error);
     }
@@ -84,11 +97,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(!$success){
         die($db->error);
     }
-
     $stmt->bind_result($task_view,$category_view,$task_id,$category_id,$due);
     ?>
 
     <ul id="taskList">
+        <form action="" method="GET">
+            <select id="sort" name="sort" onchange="submit(this.form)">
+                <option value="desc" <?php if($sort_type == "desc"){echo "selected";}?>>追加順(新しい)</option>
+                <option value="asc" <?php if($sort_type == "asc"){echo "selected";}?>>追加順(古い)</option>
+                <option value="category" <?php if($sort_type == "category"){echo "selected";}?>>カテゴリ順</option>
+                <option value="time" <?php if($sort_type == "time"){echo "selected";}?>>期限順</option>
+            </select>
+        </form>
+
         <?php while($stmt->fetch()):?>
         <li>
             <span>
