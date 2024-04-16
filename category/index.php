@@ -42,7 +42,7 @@ $category = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING);
 
     <ul id="taskList">
         <a href="../index.php">トップに戻る</a>
-
+        
         <?php while($stmt->fetch()):?>
         <li>
             <span name="task">
@@ -51,7 +51,7 @@ $category = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING);
             </span>
             
             <p class="time">
-            <?php if($due):?>
+            <?php if($due != 2147483647):?>
                 <?php echo h(view_deadline($due));?>
                 [<?php echo h(view_time($due));?>]
             <?php endif; ?>

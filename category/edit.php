@@ -11,6 +11,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $date = strtotime(filter_input(INPUT_POST, 'date', FILTER_SANITIZE_NUMBER_INT));
     $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
 
+    if (!$date){
+        $date = 2147483647;
+    }
+
     if(!$task){
         header('Location: edit.php?id='.$task_id);
         exit();

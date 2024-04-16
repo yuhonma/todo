@@ -23,6 +23,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $date = strtotime(filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING));
     $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
 
+    if (!$date){
+        $date = 2147483647;
+    }
+
     if(!$task){
         header('Location: index.php');
         exit();
@@ -119,7 +123,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </span>
             <p class="time">
             <!-- 時間表示 -->
-            <?php if($due):?>
+            <?php if($due != 2147483647):?>
             
                 <?php echo h(view_deadline($due));?>
                 [<?php echo h(view_time($due));?>]

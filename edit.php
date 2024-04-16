@@ -11,6 +11,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $date = strtotime(filter_input(INPUT_POST, 'date', FILTER_SANITIZE_NUMBER_INT));
     $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
 
+    if (!$date){
+        $date = 2147483647;
+    }
+
     if(!$task){
         header('Location: edit.php?id='.$task_id);
         exit();
@@ -85,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     ?>
     <form action="" method="post">
         <input type="text" name="task" placeholder="新しいタスクを入力してください" value="<?php echo h($task_view);?>">
-        <input type="datetime-local" name="date" value="<?php if($due){echo date('Y-m-d\TH:i',h($due));}?>"/>
+        <input type="datetime-local" name="date" value="<?php if($due != 2147483647){echo date('Y-m-d\TH:i',h($due));}?>"/>
         <input type="text" name="category" placeholder="カテゴリを入力してください" value="<?php echo h($category_view);?>">
         <input type="submit" style="background-color: gray;" value="編集完了"/>
     </form>

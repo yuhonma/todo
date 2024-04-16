@@ -47,7 +47,7 @@ $db = dbconnect();
             </span>
             <p class="time">
             <!-- 時間表示 -->
-            <?php if($due):?>
+            <?php if($due != 2147483647):?>
             
                 <?php echo h(view_deadline($due));?>
                 [<?php echo h(view_time($due));?>]
